@@ -20,7 +20,7 @@ class MyAgent(MLAgent):
         train_and_plot(agent=self, validation_agent=random_agent, iterations=iterations, trainings=trainings, validations=validations)
         save(self, 'MyAgent')
 
-my_agent = MyAgent()
+my_agent = MyAgent(alpha=0.85, epsilon=0.05)
 #my_agent = load('MyAgent')
 
-my_agent.train_and_plot(50, 100, 1000)
+my_agent.train_and_plot(100, 200, 2000)
