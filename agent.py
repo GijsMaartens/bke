@@ -1,4 +1,4 @@
-from bke import MLAgent, RandomAgent, validate, plot_validation, is_winner, opponent, start, load, train, save
+from bke import MLAgent, RandomAgent, train_and_plot, validate, plot_validation, is_winner, opponent, start, load, train, save
  
  
 class MyAgent(MLAgent):
@@ -15,12 +15,12 @@ class MyAgent(MLAgent):
         validation_agent = RandomAgent()
         validation_result = validate(agent_x=self, agent_o=validation_agent, iterations=1000)
         plot_validation(validation_result)
-    def train(self, iterations):
-        train(self, iterations)
+    def train_and_plot(self, iterations, trainings, validations):
+        random_agent = RandomAgent()
+        train_and_plot(agent=self, validation_agent=random_agent, iterations=iterations, trainings=trainings, validations=validations)
         save(self, 'MyAgent')
 
- 
 my_agent = MyAgent()
-my_agent = load('MyAgent')
+#my_agent = load('MyAgent')
 
-my_agent.validate()
+my_agent.train_and_plot(50, 100, 1000)
